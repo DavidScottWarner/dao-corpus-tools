@@ -96,4 +96,4 @@ Written by David Scott Warner (University of Pittsburgh) with AI assistance (Cur
 
 ## How to cite
 
-DOI to be added.
+Warner, D. S. (2026). *DAO Corpus Tools: Code for the DAO sample selection methodology* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.22982779
