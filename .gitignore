@@ -4,3 +4,4 @@ output/
 corpus/
 *.xlsx
 
+.DS_Store
