@@ -30,6 +30,8 @@ The full list of Snapshot spaces was collected on September 13, 2026. The propos
 
 **`proposal_fetcher.py`** — Step 5. Reads the selected organizations from `spaces_to_fetch.csv` and downloads every proposal for those Snapshot spaces. It writes one text file per proposal, plus `corpus/manifest.csv` and `corpus/fetch_summary.csv`. Each text file has a short header (title, dates, choices, scores, quorum, vote count, Snapshot URL, and discussion link) and then the full proposal body. If Snapshot has no discussion link, the header says `discussion: none`. Short bodies are kept and marked as stubs in the manifest. They are not skipped.
 
+**`reproduce_numbers.py`** — Recreates the numbers reported in the paper: the space counts, the eligibility counts, the share of spaces still governing by stratum, and Table 1. It reads three local files: `output/spaces_2026-09-13.csv`, `output/last_proposal_dates_2026-09-19.csv`, and `corpus/manifest.csv`. It does not contact Snapshot. It prints the results and writes `output/table1.csv`. Those three files are in the separate data deposit on Zenodo (DOI to be added). They can also be recreated by running the other scripts, though Snapshot's live data will have changed since September 2026.
+
 Ranking and screening (step 4) were done by hand. There is no script for that step. `spaces_to_fetch.csv` is the list that remained after screening, and it is the input to collection.
 
 ### Data files
@@ -88,6 +90,12 @@ To try the proposal download with only two proposals per space:
 python proposal_fetcher.py --test 2
 ```
 
+Recreate the paper's reported numbers from the three local files named above:
+
+```bash
+python reproduce_numbers.py
+```
+
 The space list is large, so `space_fetcher.py` usually takes a few minutes. `last_proposal_date_fetcher.py` takes longer, because it makes one request per line in `space_ids.txt`. `proposal_fetcher.py` takes longer still, because it downloads the full text of every proposal for the selected spaces.
 
 ## Authorship
@@ -96,4 +104,6 @@ Written by David Scott Warner (University of Pittsburgh) with AI assistance (Cur
 
 ## How to cite
 
-Warner, D. S. (2026). *DAO Corpus Tools: Code for the DAO sample selection methodology* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.22982779
+Warner, D. S. (2026). *DAO Corpus Tools: Code for the DAO sample selection methodology* [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.22982778
+
+This DOI always points to the latest version. Each release also has its own DOI, listed on the Zenodo page.
